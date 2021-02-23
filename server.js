@@ -13,6 +13,10 @@ mongoose.connection.once('open', ()=> {
     console.log('connected to mongo');
 });
 
+// ========= MODELS ============
+
+const Log = require('./models/logs')
+
 // ========= ROUTES ==============
 
 app.get('/logs/new', (req, res) => {
