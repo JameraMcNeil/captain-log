@@ -19,6 +19,11 @@ const Log = require('./models/logs')
 
 // ========= ROUTES ==============
 
+// index
+app.get('/logs', (req, res) => {
+    res.send('index')
+})
+
 app.get('/logs/new', (req, res) => {
     res.render('new.ejs')
 })
