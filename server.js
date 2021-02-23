@@ -41,15 +41,16 @@ app.post('/logs/', (req, res) => {
         req.body.shipIsBroken = false;
     }
     Log.create(req.body, (error, logEntry) => {
-        res.send(logEntry)
-        res.redirect('show.ejs')
+        res.redirect('/logs')
     })
 })
 
 // show
 app.get('/logs/:id', (req, res) => {
-    Log.findById(req.params.id, (error, foundLogs) => {
-        res.send(foundLogs)
+    Log.findById(req.params.id, (error, logs) => {
+        res.render('show.ejs', {
+            logEntry : logs
+        })
     })
 })
 

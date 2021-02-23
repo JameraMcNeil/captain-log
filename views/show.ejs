@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captain Entry Log</title>
+</head>
+<body>
+    <h1>Captain Entry Log</h1>
+    <h2><%= logEntry.title %></h2>
+    <p><%= logEntry.entry %></p>
+    <p>
+        <% if (logEntry.shipIsBroken === true) { %>
+            The ship is broken.
+        <% } else { %>
+            The ship is NOT broken!
+        <% } %>
+    </p>
+    <h3><%= logEntry.timestamps %></h3>
+    <br/>
+    <a href = '/logs'>Back to Captain's Log</a>
+</body>
+</html>
