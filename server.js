@@ -21,7 +21,12 @@ const Log = require('./models/logs')
 
 // index
 app.get('/logs', (req, res) => {
-    res.send('index')
+    Log.find({}, (error, logs) => {
+        res.render('index.ejs', {
+            allLogs: logs
+        })
+    })
+    
 })
 
 app.get('/logs/new', (req, res) => {
