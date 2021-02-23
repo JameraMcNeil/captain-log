@@ -11,7 +11,7 @@ const port = 3000;
 // ========= ROUTES ==============
 
 app.get('/logs/new', (req, res) => {
-    res.send('new')
+    res.render('new.ejs')
 })
 
 app.listen(port, () => {
