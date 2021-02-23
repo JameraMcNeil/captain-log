@@ -46,6 +46,13 @@ app.post('/logs/', (req, res) => {
     })
 })
 
+// show
+app.get('/logs/:id', (req, res) => {
+    Log.findById(req.params.id, (error, foundLogs) => {
+        res.send(foundLogs)
+    })
+})
+
 app.listen(port, () => {
     console.log('Listening in on port ' + port);
 })

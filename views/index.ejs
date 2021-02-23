@@ -14,7 +14,7 @@
     <ul>
         <% for (let i = 0; i < allLogs.length; i++) { %>
             <li>
-                <%= allLogs[i].title %>
+                <a href ='/logs/<%=allLogs[i].id %>'><%= allLogs[i].title %></a>
             </li>
         <% } %>
     </ul>
