@@ -1,12 +1,17 @@
 // ======== DEPENDENCIES ===========
 
 const express = require('express');
-
+const mongoose = require('mongoose')
 
 // ======== CONFIGURATION ==========
 const app = express();
 const port = 3000;
 app.use(express.urlencoded({extended:true}));
+
+mongoose.connect('mongodb://localhost:27017/basiccrud', { useNewUrlParser: true});
+mongoose.connection.once('open', ()=> {
+    console.log('connected to mongo');
+});
 
 // ========= ROUTES ==============
 
