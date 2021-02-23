@@ -30,8 +30,10 @@ app.post('/logs/', (req, res) => {
     } else { //if not checked, req.body.shipIsBroken is undefined
         req.body.shipIsBroken = false;
     }
-    console.log(req.body)
-    res.send(req.body)
+    Log.create(req.body, (error, logEntry) => {
+        res.send(logEntry)
+        res.redirect('show.ejs')
+    })
 })
 
 app.listen(port, () => {
