@@ -6,7 +6,7 @@ const express = require('express');
 // ======== CONFIGURATION ==========
 const app = express();
 const port = 3000;
-
+app.use(express.urlencoded({extended:true}));
 
 // ========= ROUTES ==============
 
@@ -16,7 +16,13 @@ app.get('/logs/new', (req, res) => {
 
 // create
 app.post('/logs/', (req, res) => {
-    res.send('received')
+    if (req.body.shipIsBroken === 'on') { // if checked, req.body shipIsBroken is 'on'
+    req.body.shipIsBroken = true;
+    } else { //if not checked, req.body.shipIsBroken is undefined
+        req.body.shipIsBroken = false;
+    }
+    console.log(req.body)
+    res.send(req.body)
 })
 
 app.listen(port, () => {
