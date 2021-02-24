@@ -57,6 +57,15 @@ app.get('/logs/:id', (req, res) => {
     })
 })
 
+// delete
+
+app.delete('/logs/:id', (req, res) => {
+    Log.findByIdAndRemove(req.params.id, (error, deletedLogs) => {
+        console.log('Deleting: ' + deletedLogs)
+        res.redirect('/logs')
+    })
+})
+
 app.listen(port, () => {
     console.log('Listening in on port ' + port);
 })
