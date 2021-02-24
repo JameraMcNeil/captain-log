@@ -1,12 +1,15 @@
 // ======== DEPENDENCIES ===========
 
 const express = require('express');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 
 // ======== CONFIGURATION ==========
 const app = express();
 const port = 3000;
+
 app.use(express.urlencoded({extended:true}));
+app.use(methodOverride('_method'));
 
 mongoose.connect('mongodb://localhost:27017/basiccrud', { useNewUrlParser: true});
 mongoose.connection.once('open', ()=> {
