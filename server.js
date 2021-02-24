@@ -66,6 +66,16 @@ app.delete('/logs/:id', (req, res) => {
     })
 })
 
+// edit
+
+app.get('/logs/:id/edit', (req, res) => {
+    Log.findById(req.params.id, (error, foundLogs) => {
+        res.render('edit.ejs', {
+            log: foundLogs
+        })
+    })
+})
+
 app.listen(port, () => {
     console.log('Listening in on port ' + port);
 })
