@@ -76,6 +76,27 @@ app.get('/logs/:id/edit', (req, res) => {
     })
 })
 
+// put Update
+
+app.put('/logs/:id', (req, res) => {
+    if (req.body.shipIsBroken === 'on') {
+        req.body.shipIsBroken = true;
+    } else {
+        req.body.shipIsBroken = false;
+    }
+
+    // param 1 = id of fruit  we are going to update
+    // param 2 - the contents of the update going to the database
+    // param 3 = make sure mongoose send us back the changed record
+    // param 4 = the callback to execute after the database is updated
+    
+    Log.findByIdAndUpdate(req.params.id, req.body, {new: true}, (error, updatedLog) => {
+        res.redirect('/logs');
+    })
+    // console.log(req.body)
+})
+
+
 app.listen(port, () => {
     console.log('Listening in on port ' + port);
 })
